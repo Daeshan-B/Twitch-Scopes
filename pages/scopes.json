@@ -1,0 +1,202 @@
+[
+    {
+      "scope": "analytics:read:extensions",
+      "description": "View analytics data for the Twitch Extensions owned by the authenticated account.\n\nGet Extension Analytics"
+    },
+    {
+      "scope": "analytics:read:games",
+      "description": "View analytics data for the games owned by the authenticated account.\n\nGet Game Analytics"
+    },
+    {
+      "scope": "bits:read",
+      "description": "View Bits information for a channel.\n\nGet Bits Leaderboard"
+    },
+    {
+      "scope": "channel:edit:commercial",
+      "description": "Run commercials on a channel.\n\nStart Commercial"
+    },
+    {
+      "scope": "channel:manage:broadcast",
+      "description": "Manage a channel’s broadcast configuration, including updating channel configuration and managing stream markers and stream tags.\n\nModify Channel Information\nCreate Stream Marker\nReplace Stream Tags"
+    },
+    {
+      "scope": "channel:manage:extensions",
+      "description": "Manage a channel’s Extension configuration, including activating Extensions.\n\nGet User Active Extensions\nUpdate User Extensions"
+    },
+    {
+      "scope": "channel:manage:moderators",
+      "description": "Add or remove the moderator role from users in your channel.\n\nAdd Channel Moderator\nRemove Channel Moderator"
+    },
+    {
+      "scope": "channel:manage:polls",
+      "description": "Manage a channel’s polls.\n\nCreate Poll\nEnd Poll"
+    },
+    {
+      "scope": "channel:manage:predictions",
+      "description": "Manage of channel’s Channel Points Predictions\n\nCreate Channel Points Prediction\nEnd Channel Points Prediction"
+    },
+    {
+      "scope": "channel:manage:raids",
+      "description": "Manage a channel raiding another channel.\n\nStart a raid\nCancel a raid"
+    },
+    {
+      "scope": "channel:manage:redemptions",
+      "description": "Manage Channel Points custom rewards and their redemptions on a channel.\n\nCreate Custom Rewards\nDelete Custom Reward\nUpdate Custom Reward\nUpdate Redemption Status"
+    },
+    {
+      "scope": "channel:manage:schedule",
+      "description": "Manage a channel’s stream schedule.\n\nUpdate Channel Stream Schedule\nCreate Channel Stream Schedule Segment\nUpdate Channel Stream Schedule Segment\nDelete Channel Stream Schedule Segment"
+    },
+    {
+      "scope": "channel:manage:videos",
+      "description": "Manage a channel’s videos, including deleting videos.\n\nDelete Videos"
+    },
+    {
+      "scope": "channel:read:editors",
+      "description": "View a list of users with the editor role for a channel.\n\nGet Channel Editors"
+    },
+    {
+      "scope": "channel:read:goals",
+      "description": "View Creator Goals for a channel.\n\nGet Creator Goals"
+    },
+    {
+      "scope": "channel:read:hype_train",
+      "description": "View Hype Train information for a channel.\n\nGet Hype Train Events"
+    },
+    {
+      "scope": "channel:read:polls",
+      "description": "View a channel’s polls.\n\nGet Polls"
+    },
+    {
+      "scope": "channel:read:predictions",
+      "description": "View a channel’s Channel Points Predictions.\n\nGet Channel Points Predictions"
+    },
+    {
+      "scope": "channel:read:redemptions",
+      "description": "View Channel Points custom rewards and their redemptions on a channel.\n\nGet Custom Reward\nGet Custom Reward Redemption"
+    },
+    {
+      "scope": "channel:read:stream_key",
+      "description": "View an authorized user’s stream key.\n\nGet Stream Key"
+    },
+    {
+      "scope": "channel:read:subscriptions",
+      "description": "View a list of all subscribers to a channel and check if a user is subscribed to a channel.\n\nGet Broadcaster Subscriptions"
+    },
+    {
+      "scope": "channel:read:vips",
+      "description": "Read the list of VIPs in your channel.\n\nGet VIPs"
+    },
+    {
+      "scope": "channel:manage:vips",
+      "description": "Add or remove the VIP role from users in your channel.\n\nGet VIPs\nAdd Channel VIP\nRemove Channel VIP"
+    },
+    {
+      "scope": "clips:edit",
+      "description": "Manage Clips for a channel.\n\nCreate Clip"
+    },
+    {
+      "scope": "moderation:read",
+      "description": "View a channel’s moderation data including Moderators, Bans, Timeouts, and Automod settings.\n\nCheck AutoMod Status\nGet Banned Users\nGet Moderators"
+    },
+    {
+      "scope": "moderator:manage:announcements",
+      "description": "Send announcements in channels where you have the moderator role.\n\nSend Chat Announcement"
+    },
+    {
+      "scope": "moderator:manage:automod",
+      "description": "Manage messages held for review by AutoMod in channels where you are a moderator.\n\nManage Held AutoMod Messages"
+    },
+    {
+      "scope": "moderator:read:automod_settings",
+      "description": "View a broadcaster’s AutoMod settings.\n\nGet AutoMod Settings"
+    },
+    {
+      "scope": "moderator:manage:automod_settings",
+      "description": "Manage a broadcaster’s AutoMod settings.\n\nUpdate AutoMod Settings"
+    },
+    {
+      "scope": "moderator:manage:banned_users",
+      "description": "Ban and unban users.\n\nBan users\nUnban user"
+    },
+    {
+      "scope": "moderator:read:blocked_terms",
+      "description": "View a broadcaster’s list of blocked terms.\n\nGet Blocked Terms"
+    },
+    {
+      "scope": "moderator:manage:blocked_terms",
+      "description": "Manage a broadcaster’s list of blocked terms.\n\nAdd Blocked Term\nRemove Blocked Term"
+    },
+    {
+      "scope": "moderator:manage:chat_messages",
+      "description": "Delete chat messages in channels where you have the moderator role\n\nDelete Chat Messages"
+    },
+    {
+      "scope": "moderator:read:chat_settings",
+      "description": "View a broadcaster’s chat room settings.\n\nGet Chat Settings"
+    },
+    {
+      "scope": "moderator:manage:chat_settings",
+      "description": "Manage a broadcaster’s chat room settings.\n\nUpdate Chat Settings"
+    },
+    {
+      "scope": "user:edit",
+      "description": "Manage a user object.\n\nUpdate User"
+    },
+    {
+      "scope": "user:edit:follows",
+      "description": "Deprecated. Was previously used for “Create User Follows” and “Delete User Follows.” See Deprecation of Create and Delete Follows API Endpoints."
+    },
+    {
+      "scope": "user:manage:blocked_users",
+      "description": "Manage the block list of a user.\n\nBlock User\nUnblock User"
+    },
+    {
+      "scope": "user:read:blocked_users",
+      "description": "View the block list of a user.\n\nGet User Block List"
+    },
+    {
+      "scope": "user:read:broadcast",
+      "description": "View a user’s broadcasting configuration, including Extension configurations.\n\nGet Stream Markers\nGet User Extensions\nGet User Active Extensions"
+    },
+    {
+      "scope": "user:manage:chat_color",
+      "description": "Update the color used for the user’s name in chat.Update User Chat Color"
+    },
+    {
+      "scope": "user:read:email",
+      "description": "View a user’s email address.\n\nGet Users (optional)"
+    },
+    {
+      "scope": "user:read:follows",
+      "description": "View the list of channels a user follows.\nGet Followed Streams"
+    },
+    {
+      "scope": "user:read:subscriptions",
+      "description": "View if an authorized user is subscribed to specific channels.\n\nCheck User Subscription"
+    },
+    {
+      "scope": "user:manage:whispers",
+      "description": "Read whispers that you send and receive, and send whispers on your behalf.\n\nSend Whisper"
+    },
+    {
+      "scope": "channel:moderate",
+      "description": "Perform moderation actions in a channel. The user requesting the scope must be a moderator in the channel."
+    },
+    {
+      "scope": "chat:edit",
+      "description": "Send live stream chat messages."
+    },
+    {
+      "scope": "chat:read",
+      "description": "View live stream chat messages."
+    },
+    {
+      "scope": "whispers:read",
+      "description": "View your whisper messages."
+    },
+    {
+      "scope": "whispers:edit",
+      "description": "Send whisper messages."
+    }
+  ]
