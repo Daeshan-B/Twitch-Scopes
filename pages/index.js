@@ -59,7 +59,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="#">Twitch Scopes Authorizor</a>
+          Welcome to <a href="#">Twitch Scopes</a>
         </h1>
 
         <p className={styles.description}>
@@ -67,7 +67,7 @@ export default function Home() {
           Visit <a href="https://dev.twitch.tv/docs/authentication/scopes">
             dev.twitch.tv</a> for more on scopes and how to use them.
             <br></br>
-            This site was created in part of the <a href="https://github.com/Daeshan-B/JavaBits">JavaBits</a> java library for Twitch.tv chat bots.
+            This site was created in part of the <a href="https://github.com/Daeshan-B/JavaBits">JTA</a> Java API for Twitch.tv chat bots.
         </p>
         <h1>Twitch API Scopes</h1>
 
