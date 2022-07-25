@@ -52,20 +52,22 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>JavaBits Authorizer</title>
+        <title>Twitch Scopes Authorizer</title>
         <meta name="description" content="A Twitch.tv application authorization token generator." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://github.com/Daeshan-B/JavaBits">JavaBits API</a>
+          Welcome to <a href="#">Twitch Scopes Authorizor</a>
         </h1>
 
         <p className={styles.description}>
           Get started by selecting the scopes you wish to use. <br></br>
           Visit <a href="https://dev.twitch.tv/docs/authentication/scopes">
             dev.twitch.tv</a> for more on scopes and how to use them.
+            <br></br>
+            This site was created in part of the <a href="https://github.com/Daeshan-B/JavaBits">JavaBits</a> java library for Twitch.tv chat bots.
         </p>
         <h1>Twitch API Scopes</h1>
 
