@@ -67,7 +67,7 @@ export default function Home() {
           Visit <a href="https://dev.twitch.tv/docs/authentication/scopes">
             dev.twitch.tv</a> for more on scopes and how to use them.
             <br></br>
-            This site was created in part of the <a href="https://github.com/Daeshan-B/JavaBits">JTA</a> Java API for Twitch.tv chat bots.
+            This site was created in part of the <a href="https://github.com/Daeshan-B/JavaBits">JTA</a>. A Java API for Twitch.tv chat bots.
         </p>
         <h1>Twitch API Scopes</h1>
 

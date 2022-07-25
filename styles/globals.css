@@ -28,7 +28,7 @@ a {
 
 .styled-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  padding: 20%;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
