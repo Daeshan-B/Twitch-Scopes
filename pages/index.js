@@ -43,7 +43,7 @@ export default function Home() {
     const encodedScopes = encodeURIComponent(scopeString);
     
     window.open(
-      `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${client_id}&redirect_uri=http://javabits.daeshanbuseck.com/auth&scope=${encodedScopes}&state=c3ab8aa609ea11e793ae92361f002671`
+      `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${client_id}&redirect_uri=https://javabits.daeshanbuseck.com/auth&scope=${encodedScopes}&state=c3ab8aa609ea11e793ae92361f002671`
     );
     window.location.reload();
     
