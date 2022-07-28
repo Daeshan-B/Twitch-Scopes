@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
 const scopes = require("./scopes.json");
-const redirect_uri = 'https://javabits.daeshanbuseck.com/auth'
+const redirect_uri = 'https://twitchscopes.com/auth'
 const client_id = '2didsk5u5vofme0jg633hlrncou75l'
 
 export default function Home() {
