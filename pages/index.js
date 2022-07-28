@@ -1,7 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
+import client_id from "../settings"
+
 const scopes = require("./scopes.json");
+const redirect_uri = 'https://javabits.daeshanbuseck.com/auth'
 
 export default function Home() {
   let scopeSet = new Set([]);
@@ -27,7 +30,7 @@ export default function Home() {
       return;
     }
 
-    const client_id = "2didsk5u5vofme0jg633hlrncou75l";
+    const client_id = client_id;
     let scopeString = "";
     let count = 0;
     scopeSet.forEach((scope) => {
@@ -43,7 +46,7 @@ export default function Home() {
     const encodedScopes = encodeURIComponent(scopeString);
     
     window.open(
-      `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${client_id}&redirect_uri=https://javabits.daeshanbuseck.com/auth&scope=${encodedScopes}&state=c3ab8aa609ea11e793ae92361f002671`
+      `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${encodedScopes}&state=c3ab8aa609ea11e793ae92361f002671`
     );
     window.location.reload();
     
