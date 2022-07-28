@@ -1,13 +1,15 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import React, { useState } from "react";
+import {v4 as uuidv4} from 'uuid';
+
 const scopes = require("./scopes.json");
 const redirect_uri = 'https://twitchscopes.com/auth'
 const client_id = '2didsk5u5vofme0jg633hlrncou75l'
 
 export default function Home() {
   let scopeSet = new Set([]);
-
+  let myuuid = uuidv4().replace('-','');
+  
   function handleChange(event) {
     let scope = event.target.value;
     if (event.target.checked) {
@@ -44,7 +46,7 @@ export default function Home() {
     const encodedScopes = encodeURIComponent(scopeString);
     
     window.open(
-      `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${encodedScopes}&state=c3ab8aa609ea11e793ae92361f002671`
+      `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${encodedScopes}&state=${myuuid}`
     );
     window.location.reload();
     
