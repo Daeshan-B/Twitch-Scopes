@@ -1,10 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
-import client_id from "../settings"
-
 const scopes = require("./scopes.json");
 const redirect_uri = 'https://javabits.daeshanbuseck.com/auth'
+const client_id = '2didsk5u5vofme0jg633hlrncou75l'
 
 export default function Home() {
   let scopeSet = new Set([]);
@@ -30,7 +29,6 @@ export default function Home() {
       return;
     }
 
-    const client_id = client_id;
     let scopeString = "";
     let count = 0;
     scopeSet.forEach((scope) => {
