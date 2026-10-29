@@ -1,120 +1,186 @@
+import { useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const scopes = require("./scopes.json");
-const redirect_uri = 'https://twitchscopes.com/auth'
-const client_id = '2didsk5u5vofme0jg633hlrncou75l'
+const redirect_uri = "https://twitchscopes.com/auth";
+const client_id = "2didsk5u5vofme0jg633hlrncou75l";
 
 export default function Home() {
-  let scopeSet = new Set([]);
-  let myuuid = uuidv4().replace('-','');
-  
+  const [selectedScopes, setSelectedScopes] = useState(() => new Set());
+  const [showEmptyMessage, setShowEmptyMessage] = useState(false);
+  const myuuid = uuidv4().replace("-", "");
+
   function handleChange(event) {
-    let scope = event.target.value;
-    if (event.target.checked) {
-      scopeSet.add(scope);
-      console.log("Added Scope - " + scope);
-      console.log("Current Scopes");
-      console.log(scopeSet);
-    } else {
-      scopeSet.delete(scope);
-      console.log("Removed Scope- " + scope);
-      console.log("Current Scopes");
-      console.log(scopeSet);
-    }
+    const scope = event.target.value;
+    setSelectedScopes((current) => {
+      const next = new Set(current);
+      if (event.target.checked) {
+        next.add(scope);
+      } else {
+        next.delete(scope);
+      }
+      return next;
+    });
+    setShowEmptyMessage(false);
   }
 
   function requestToken() {
-    if (scopeSet.size === 0) {
-      alert("No scopes have been selected. Please try again!");
+    if (selectedScopes.size === 0) {
+      setShowEmptyMessage(true);
       return;
     }
 
-    let scopeString = "";
-    let count = 0;
-    scopeSet.forEach((scope) => {
-      count++;
-      if (count == scopeSet.size) {
-        scopeString += scope;
-      } else {
-        scopeString += scope + " ";
-      }
-
-      console.log(scopeString);
-    });
+    // Keep the catalogue order from scopes.json so the URL is deterministic.
+    const scopeString = scopes
+      .filter((scopeObject) => selectedScopes.has(scopeObject.scope))
+      .map((scopeObject) => scopeObject.scope)
+      .join(" ");
     const encodedScopes = encodeURIComponent(scopeString);
-    
+
     window.open(
       `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${encodedScopes}&state=${myuuid}`
     );
     window.location.reload();
-    
   }
 
+  const selectedCount = selectedScopes.size;
+  const isSelectionEmpty = selectedCount === 0;
+
   return (
-    <div className={styles.container}>
+    <div className={styles.page}>
       <Head>
         <title>Twitch Scopes Authorizer</title>
-        <meta name="description" content="A Twitch.tv application authorization token generator." />
+        <meta
+          name="description"
+          content="Pick the Twitch API scopes your app needs and generate an OAuth access token."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="#">Twitch Scopes</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by selecting the scopes you wish to use. <br></br>
-          Visit <a href="https://dev.twitch.tv/docs/authentication/scopes">
-            dev.twitch.tv</a> for more on scopes and how to use them.
-            <br></br>
-            This site was created in part of the <a href="https://github.com/Daeshan-B/JavaBits">JTA</a>. A Java API for Twitch.tv chat bots.
-        </p>
-        <h1>Twitch API Scopes</h1>
-
-        <div>
-          <table className="styled-table">
-            <thead>
-              <tr>
-                <th scope="col">Active</th>
-                <th scope="col">Scope</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {scopes.map((scopeObject, i) => {
-                return (
-                  <tr key={scopeObject + i}>
-                    <td>
-                      <input
-                        type="checkbox"
-                        value={scopeObject.scope}
-                        onChange={handleChange}
-                      />
-                    </td>
-                    <td>{scopeObject.scope}</td>
-                    <td>{scopeObject.description}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-
-          <div className="button-div">
-            <button type="button" className="button-5" onClick={requestToken}>
-              Authorize Application
-            </button>
-          </div>
-          <p className="p-note">
-            NOTE: An application must request only the scopes required by the
-            APIs that their app calls.
-            <br></br>If you request more scopes than is required to support your
-            app’s functionality, Twitch may suspend your application’s access to
-            the Twitch API.
+        <header className={styles.header}>
+          <p className={styles.eyebrow}>Twitch OAuth helper</p>
+          <h1 className={styles.title}>Twitch Scopes</h1>
+          <p className={styles.description}>
+            Pick the scopes your app needs, authorize with Twitch, and copy the
+            access token. Read the{" "}
+            <a
+              href="https://dev.twitch.tv/docs/authentication/scopes"
+              target="_blank"
+              rel="noreferrer"
+            >
+              scope docs
+            </a>{" "}
+            if you are not sure which ones to choose.
           </p>
+        </header>
+
+        <section className={styles.panel} aria-labelledby="scopes-heading">
+          <div className={styles.panelHeader}>
+            <h2 id="scopes-heading" className={styles.panelTitle}>
+              Twitch API scopes
+            </h2>
+            <p className={styles.panelHint}>
+              Click a row to toggle it. Descriptions list the API calls each
+              scope unlocks.
+            </p>
+          </div>
+
+          <ul className={styles.scopeList}>
+            {scopes.map((scopeObject) => {
+              const inputId = `scope-${scopeObject.scope}`;
+              const isSelected = selectedScopes.has(scopeObject.scope);
+
+              return (
+                <li key={scopeObject.scope} className={styles.scopeItem}>
+                  <label
+                    htmlFor={inputId}
+                    className={`${styles.scopeRow} ${
+                      isSelected ? styles.scopeRowSelected : ""
+                    }`}
+                  >
+                    <input
+                      id={inputId}
+                      className={styles.checkbox}
+                      type="checkbox"
+                      value={scopeObject.scope}
+                      checked={isSelected}
+                      onChange={handleChange}
+                    />
+                    <span className={styles.scopeBody}>
+                      <span className={styles.scopeTopLine}>
+                        <code className={styles.codePill}>
+                          {scopeObject.scope}
+                        </code>
+                        {isSelected ? (
+                          <span className={styles.selectedTag}>
+                            <span aria-hidden="true">✓</span> Selected
+                          </span>
+                        ) : null}
+                      </span>
+                      <span className={styles.scopeDescription}>
+                        {scopeObject.description}
+                      </span>
+                    </span>
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <div className={styles.actions}>
+          <p className={styles.count} aria-live="polite">
+            {selectedCount} {selectedCount === 1 ? "scope" : "scopes"} selected
+          </p>
+
+          <button
+            type="button"
+            className={`${styles.authorizeButton} ${
+              isSelectionEmpty ? styles.authorizeButtonIdle : ""
+            }`}
+            onClick={requestToken}
+          >
+            Authorize Application
+          </button>
+
+          {showEmptyMessage ? (
+            <p className={styles.errorMessage} role="alert">
+              Select at least one scope before you authorize.
+            </p>
+          ) : null}
         </div>
+
+        <aside className={styles.note} aria-label="Scope warning">
+          <strong className={styles.noteTitle}>Request only what you need</strong>
+          <p className={styles.noteText}>
+            An application must request only the scopes required by the APIs it
+            calls. Asking for more than your app uses can get its API access
+            suspended.
+          </p>
+        </aside>
+
+        <p className={styles.meta}>
+          Built for the{" "}
+          <a
+            href="https://github.com/Daeshan-B/JavaBits"
+            target="_blank"
+            rel="noreferrer"
+          >
+            JavaBits
+          </a>{" "}
+          project, a Java API for Twitch chat bots. Source on{" "}
+          <a
+            href="https://github.com/Daeshan-B/Twitch-Scopes"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+          .
+        </p>
       </main>
     </div>
   );
